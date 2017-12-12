@@ -1,5 +1,4 @@
 package ahorcado;
-
 import java.util.Scanner;
 
 /**
@@ -385,10 +384,6 @@ public class Ahorcado {
         return this.vida;
     }
     
-    public void setVida(int vida){
-        this.vida = vida;
-    }
-    
     public int getPosib(){
         return this.posib;
     }
@@ -405,7 +400,6 @@ public class Ahorcado {
             if(siOno[i] == true)
                 s += "[" + diccionario[i] + "] ";
         return s;
-        
     }
     
     //Pone en "false" si la palbra no tiene el tamaño requerido.
@@ -438,21 +432,20 @@ public class Ahorcado {
                     }
                     t++;
 		}
-                /*Aqui problema*/
                 while(caracter.charAt(t-1) != abecedario[i] && t < caracter.length());
             }
 	}
         return cont;
     }
     
-    // calcula la entropia de cada letra y devuelve la letra menor entropia
-    // tambien elmima la letra ya retornada
+    //Calcula la entropia de cada letra y devuelve la letra menor entropia
+    //Tambien elmima la letra ya retornada
     public char entropia(){ 
 	double temp=2.0;
 	char x = ' ';
 	double iD3;
 		         
-        // detemina la menor entropia
+        //Detemina la menor entropia
 	for(int i = 0; i < TAM_ABE; i++){
             iD3 = -((this.cantidLetrPala(i)/this.palabrasPos())* (Math.log((this.cantidLetrPala(i)/this.palabrasPos()))/Math.log(2.00)));
             if(temp > iD3){
@@ -461,7 +454,7 @@ public class Ahorcado {
             }
         }
 	
-        // elimina la letra ya usada
+        //Elimina la letra ya usada
 	for(int s = 0; s < TAM_ABE; s++)
             if(abecedario[s] == x)
                 abecedario[s] = ' ';
@@ -472,18 +465,18 @@ public class Ahorcado {
     public void reducirPos(int[] pos, char entropia, char respuesta, int veces){ 
         String cadena;
 
-        // si respuesta es si, pone false todas las palbras que
-        // en esa posicion no tenga esa palabra.
+        //Si respuesta es si, pone false todas las palabras que
+        //en esa posicion no tenga esa palabra.
 	if(respuesta == 's')
             for(int i = 0; i < cantid_dicc; i++)
 		if(siOno[i] == true){
                     cadena = diccionario[i];
-                        for(int s = 0; s < veces; s++)
-                            if(cadena.charAt(pos[s]-1) != entropia)
-				siOno[i]=false;
+                    for(int s = 0; s < veces; s++)
+                        if(cadena.charAt(pos[s]-1) != entropia)
+                            siOno[i]=false;
 		}
 
-        //si repuesta es no, pone false todas las palbras con esa letra 
+        //Si repuesta es no, pone "false" todas las palabras con esa letra.
 	if(respuesta == 'n')
             for(int s = 0; s < cantid_dicc; s++){
 		if(siOno[s] == true){
@@ -495,41 +488,37 @@ public class Ahorcado {
             }
     }
     
-    // imprime en pantalla y realiza el llamado de varios metodos
-    // cambia el valor de vida,de la clase A y de posib
-    //Quitadas: Ahorcado A, int vida, int posib
+    //Imprime en pantalla y realiza el llamado de varios metodos
     public void imprimir(){
-	// pos es un vector para posiciones digitadas por el usuario.
-        
+	
+        //Pos es un vector para posiciones digitadas por el usuario.
         int[] pos = new int[20];
+        
         int veces;
 	char respuesta = ' ';
         
-	//posib = A.palabrasPos();
         this.posib = this.palabrasPos();
         
         System.out.println("Numero de vidas ==> " + this.vida);
-        System.out.println("Hay " + this.posib +" posibles");
+        System.out.println("Hay " + this.posib +"palabras posibles.");
         
         // si hay mas de una palabra posible
-	//if(A.palabrasPos() > 1){
         if(this.palabrasPos() > 1){
-            //char ent = A.entropia(A);
             char ent = this.entropia();
-            System.out.println("Su palabra tiene la letra " + ent + " ?");
+            System.out.println("¿Su palabra tiene la letra " + ent + " ?");
 
-            // no permite que la respuesta sea diferente de 's' o 'n'
+            //No permite que la respuesta sea diferente de 's' o 'n'.
             while(respuesta != 's' && respuesta != 'n'){
-                System.out.println("Digite 's' para si y 'n' para no ==>");
+                System.out.println("Digite 's' para si o 'n' para no ==>");
                 Scanner respuestaLector = new Scanner(System.in);
                 respuesta = respuestaLector.next().charAt(0);
             }
 
             // si la respuesta es 'n'
             if (respuesta == 'n'){
-                this.vida = this.vida - 1;
-                //ya que no se ocupan 'pos' ni 'veces', se pueden poner nulas
-		//A.reducirPos(null, ent, respuesta, 0);
+                this.vida -= 1;
+                
+                //Ya que no se ocupan 'pos' ni 'veces', se pueden poner nulas.
                 this.reducirPos(null, ent, respuesta, 0);
             }
             
@@ -541,13 +530,12 @@ public class Ahorcado {
 				
                 System.out.println("En que posicion esta la letra?");
 				
-		// llena el vector 'pos' segun las veces que aparece la letra en la palabra
+		//Llena el vector 'pos' segun las veces que aparece la letra en la palabra.
                 Scanner posScan;
 		for(int i = 0; i < veces; i++){
                     posScan = new Scanner(System.in);
                     pos[i] = posScan.nextInt();
                 }
-                //A.reducirPos(pos,ent,respuesta,veces);
                 this.reducirPos(pos,ent,respuesta,veces);
             }
 
