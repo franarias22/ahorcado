@@ -1,15 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ahorcado;
 
 import java.util.Scanner;
 
 /**
  *
- * @author kangu
+ * @authors: 
+    Carlos Arroyo Villalobos
+    Jean Carlo Campos Madrigal
+    Andrés Navarro Durán
+    Claudio Umaña Arias
  */
 
 public class AhorcadoJuego {
@@ -43,7 +42,7 @@ public class AhorcadoJuego {
 	
         System.out.println("Fin del juego.");
         
-        System.out.println("Press ENTER to finish...");
+        System.out.println("Presione ENTER para terminar...");
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     }

@@ -1,16 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ahorcado;
 
 import java.util.Scanner;
 
 /**
  *
- * @author kangu
+ * @authors: 
+    Carlos Arroyo Villalobos
+    Jean Carlo Campos Madrigal
+    Andrés Navarro Durán
+    Claudio Umaña Arias
  */
+
 public class Ahorcado {
     private static final int TAM_ABE = 26;
     
