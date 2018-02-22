@@ -1,5 +1,5 @@
 # ahorcado 
-(Atention: It was coded, comented and documented in spanish)
+WARNING: It was coded, comented and documented in spanish.
 
 Juego simple de ahorcado por consola en Java8.
 
