@@ -7,7 +7,7 @@ Este proyecto esta configurado para Netbeans 8.2.
  
 Autores:
 * Carlos Arroyo Villalobos
-* Jean Carlo Campos Madrigal
+* Jean Carlo Campos Madrigal @jeancamposm
 * Andrés Navarro Durán
 * Claudio Umaña Arias
 
