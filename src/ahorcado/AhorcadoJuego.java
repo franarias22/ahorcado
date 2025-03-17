@@ -44,6 +44,6 @@ public class AhorcadoJuego {
         System.out.println("Fin del juego.");
         
         System.out.println("Presione ENTER para terminar...");
-        scanner.nextLine(); // Utilizo el mismo objeto scanner para esperar la entrada
+        scanner.nextLine(); // Utilizo el mismo objeto scanner para la entrada
     }
 }
